@@ -1,0 +1,9 @@
+{
+  "/api/*": {
+    "context": "['/api']",
+    "target": "http://wagnerweinert.com.br",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

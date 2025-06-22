@@ -1,0 +1,21 @@
+<!-- Modal -->
+@if (isModalOpen) {
+  <div class="modal-backdrop">
+    <div class="modal">
+      <h2>Deletar usuário</h2>
+
+      <form id="userForm">
+        <div>
+          <p><b>Usuario</b>: {{ nome }}</p>
+          <p><b>Email</b>: {{ email }}</p>
+          <p style="text-align: center"><b>Tem CERTEZA que deseja deletar?</b></p>
+        </div>
+        <div>
+          <button type="submit" (click)="deleteUser()">Deletar</button>
+        </div>
+      </form>
+
+      <button (click)="closeModal()">Fechar</button>
+    </div>
+  </div>
+}

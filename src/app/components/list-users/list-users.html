@@ -1,0 +1,72 @@
+<main id="main-content">
+  <div>
+    <h1>Listagem de Usuários</h1>
+
+    <div id="modal-create-user">
+      <create-user-modal-component
+        [apiURL]="apiURL"
+        (usuarioAdicionado)="ngOnInit()">
+      </create-user-modal-component>
+    </div>
+
+    <div>
+      <edit-modal
+        #editModal
+        [apiURL]="apiURL"
+        (usuarioEditado)="ngOnInit()"></edit-modal>
+    </div>
+
+    <div>
+      <delete-modal
+      #deleteModal
+      [apiURL]="apiURL"
+      (usuarioDeletado)="ngOnInit()"></delete-modal>
+    </div>
+
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for(user of users; track user.id) {
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>
+              @if(user.nome.length < 1){ [nulo] }
+              @else{ {{ user.nome }} }
+            </td>
+            <td>
+              @if(user.email.length < 1){ [nulo] }
+              @else{ {{ user.email }} }
+            </td>
+            <td id="td-actions">
+<!--              <div>-->
+<!--                <edit-modal-->
+<!--                  [nome]="user.nome"-->
+<!--                  [email]="user.email"-->
+<!--                  (usuarioEditado)="ngOnInit()">-->
+<!--                </edit-modal>-->
+<!--              </div>-->
+              <div>
+                <button (click)="openEditModal(user)" >
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+                </button>
+              </div>
+
+              <div>
+                <button (click)="openDeleteModal(user)">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</main>

@@ -1,0 +1,27 @@
+<!-- Botão para abrir o create-user-modal -->
+<button (click)="openModal()">Adicionar usuário</button>
+
+<!-- Modal -->
+@if (isModalOpen) {
+  <div class="modal-backdrop">
+    <div class="modal">
+      <h2>Adicionar novo usuário</h2>
+
+      <form id="userForm">
+        <div>
+          <label id="nome" for="nome">Nome</label>
+          <input type="text" [(ngModel)]="nome" id="nome" name="nome" required/>
+        </div>
+        <div>
+          <label id="email" for="email">Email</label>
+          <input type="email" [(ngModel)]="email" id="email" name="email" required/>
+        </div>
+        <div>
+          <button type="submit" (click)="saveUser()">Adicionar</button>
+        </div>
+      </form>
+
+      <button (click)="closeModal()">Fechar</button>
+    </div>
+  </div>
+}
