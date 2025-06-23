@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const response = await fetch('http://wagnerweinert.com.br/api_banco.php', {
+  const response = await fetch('http://wagnerweinert.com.br/api/api_banco.php', {
     method: req.method,
     headers: {
       'Content-Type': 'application/json',
