@@ -4,7 +4,9 @@ export default async function handler(req, res) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: req.method === 'POST' ? JSON.stringify(req.body) : undefined,
+    body: (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE')
+      ? JSON.stringify(req.body)
+      : undefined,
   });
 
   const data = await response.json();
