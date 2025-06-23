@@ -29,24 +29,28 @@ export class ModalComponent {
   }
 
   saveUser() {
-    const dados = {
-      nome: this.nome,
-      email: this.email
-    };
+    if(this.nome != '' && this.email != '')
+    {
+      const dados = {
+        nome: this.nome,
+        email: this.email
+      };
 
-    this.http.post(this.apiURL, dados).subscribe({
-      next: (res) => {
-        console.log('Sucesso:', res);
-        alert('Usuário adicionado com sucesso!');
-        this.nome = '';
-        this.email = '';
-        this.closeModal();
-        this.usuarioAdicionado.emit();
-      },
-      error: (err) => {
-        console.error('Erro:', err);
-        alert('Erro ao adicionar usuário.');
-      }
-    });
+      this.http.post(this.apiURL, dados).subscribe({
+        next: (res) => {
+          console.log('Sucesso:', res);
+          alert('Usuário adicionado com sucesso!');
+          this.nome = '';
+          this.email = '';
+          this.closeModal();
+          this.usuarioAdicionado.emit();
+        },
+        error: (err) => {
+          console.error('Erro:', err);
+          alert('Erro ao adicionar usuário.');
+        }
+      });
+    }
+    else { alert('Preencha todos os campos!'); }
   }
 }
